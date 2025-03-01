@@ -19,4 +19,5 @@ This script will check for missing ROPs so you can ensure you're getting the ful
 
 ## About This Script
 The script downloads approximately 7 GB of data for the `nvidia/cuda:12.4.1-devel-ubuntu22.04` container image and installs an additional 288 MB of packages inside the container to build and run the `nbody` benchmark. Once the benchmark completes, the container and its image are automatically deleted using `docker run --rm` and `docker rmi`, **leaving no permanent footprint on the host system beyond the initial disk usage.**
+-# eof
 ![screenshot](zscreenshot.png)
