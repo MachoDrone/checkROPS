@@ -1,5 +1,7 @@
+cat << 'EOF' > checkROPS.sh
 #!/bin/bash
-echo version "9:50am 01MAR25"
+echo version "10:05am 01MAR25
+df -h
 DRIVER_VERSION=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1)
 if [ -z "$DRIVER_VERSION" ]; then
     echo "Error: NVIDIA driver not detected on host. Please install NVIDIA drivers."
@@ -37,8 +39,4 @@ docker run --rm --gpus all "$CUDA_IMAGE" bash -c "
     cmake . && make && \
     RESULT=\$(./nbody -benchmark -numbodies=65536 | grep -oP \"\d+\.\d+(?= single-precision GFLOP/s)\") && \
     echo -e \"\n\033[34mThresholds Refined:\nRTX 30-series: 15,000 GFLOP/s (covers 3060-3090 range).\nRTX 4060/4070: 25,000 GFLOP/s (mid-tier Ada estimate).\nRTX 4080/4090: 38,000 GFLOP/s (high-end Ada/Blackwell).\nRTX 50-series: 38,000 GFLOP/s (speculative).\nFallback: 10,000 GFLOP/s (20-series).\033[0m\n\" && \
-    if (( \$(echo \"\$RESULT >= \$THRESH\" | bc -l) )); then \
-        echo -e \"\033[32mGFLOP/s: \$RESULT\033[0m\" && echo -e \"\033[32mROPs fully working for \$GPU\033[0m\n\"; \
-    else \
-        echo -e \"\033[31mGFLOP/s: \$RESULT\033[0m\" && echo -e \"\033[31mROPs fail or doubt for \$GPU\033[0m\n\"; \
-    fi && exit 0" && docker rmi "$CUDA_IMAGE"
+    if (( \$(echo \"\$RESULT >= \$THRESH\" | bc -l)
