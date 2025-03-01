@@ -1,29 +1,5 @@
 #!/bin/bash
 
-# Check dependencies
-if ! command -v nvidia-smi >/dev/null 2>&1; then
-    echo "Error: nvidia-smi not found. Ensure NVIDIA drivers are installed."
-    exit 1
-fi
-if ! command -v docker >/dev/null 2>&1; then
-    echo "Error: Docker not found. Install Docker first."
-    exit 1
-fi
-if ! docker ps >/dev/null 2>&1; then
-    echo "Error: Docker requires sudo or user must be in 'docker' group. Run 'sudo usermod -aG docker $USER' and relogin, or use sudo."
-    exit 1
-fi
-if ! docker run --rm --gpus all nvidia/cuda:12.4.1-base nvidia-smi >/dev/null 2>&1; then
-    echo "Error: NVIDIA Container Toolkit not configured. Install nvidia-docker2 or equivalent."
-    exit 1
-fi
-if grep -q "microsoft" /proc/version 2>/dev/null; then
-    if ! docker info --format '{{.Runtimes}}' | grep -q "nvidia"; then
-        echo "Error: NVIDIA runtime not detected in WSL2 Docker. Ensure Docker Desktop WSL2 integration and NVIDIA Container Toolkit are configured."
-        exit 1
-    fi
-fi
-
 DRIVER_VERSION=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1)
 if [ -z "$DRIVER_VERSION" ]; then
     echo "Error: NVIDIA driver not detected on host. Please install NVIDIA drivers."
