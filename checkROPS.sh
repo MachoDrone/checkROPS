@@ -1,4 +1,3 @@
-cat << 'EOF' > checkROPS.sh
 #!/bin/bash
 echo version "10:05am 01MAR25
 df -h
