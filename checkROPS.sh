@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e \n"version 9:50am 01MAR25\n"
+echo -e "\nversion 11:00am 01MAR25\n"
 df -h
 DRIVER_VERSION=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1)
 if [ -z "$DRIVER_VERSION" ]; then
