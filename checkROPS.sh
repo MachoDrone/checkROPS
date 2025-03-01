@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "hello world"
 DRIVER_VERSION=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1)
 if [ -z "$DRIVER_VERSION" ]; then
     echo "Error: NVIDIA driver not detected on host. Please install NVIDIA drivers."
