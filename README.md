@@ -8,6 +8,7 @@ This script will check for missing ROPs so you can ensure you're getting the ful
 ## Windows
 1. Use GPU-Z or HWinfo to see the ROP count and confirm it matches your GPU’s specs (e.g., look up your GPU on [TechPowerUp](https://www.techpowerup.com) or the manufacturer’s site).
 2. Run a simple rendering test (e.g., [Unigine Heaven](https://benchmark.unigine.com/heaven)) to ensure the GPU’s graphics pipeline, including ROPs, is functioning.
+.
 
 ROPs are **not used** for AI inference or the AI image generation process. The GPU’s compute units (CUDA cores, Tensor Cores, etc.) handle those tasks.
 
