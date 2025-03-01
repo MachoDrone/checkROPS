@@ -4,7 +4,7 @@ This script will check for missing ROPs so you can ensure you're getting the ful
 
 ## Linux
 ```bash
-wget -O - https://raw.githubusercontent.com/MachoDrone/checkROPS/main/checkROPS.sh | bash
+wget -O - https://raw.githubusercontent.com/MachoDrone/checkROPS/main/checkROPS.sh | bash```
 
 ## Windows
 1. Use GPU-Z or HWinfo to see the ROP count and confirm it matches your GPU’s specs (e.g., look up your GPU on [TechPowerUp](https://www.techpowerup.com) or the manufacturer’s site).
