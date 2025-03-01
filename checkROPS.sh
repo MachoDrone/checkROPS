@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "hello world"
+echo version "9:50am 01MAR25"
 DRIVER_VERSION=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1)
 if [ -z "$DRIVER_VERSION" ]; then
     echo "Error: NVIDIA driver not detected on host. Please install NVIDIA drivers."
@@ -21,7 +21,7 @@ fi
 
 echo "Using container image: $CUDA_IMAGE (CUDA $CUDA_VERSION), compatible with host driver $DRIVER_VERSION"
 
-docker run --rm --gpus all -it "$CUDA_IMAGE" bash -c "
+docker run --rm --gpus all "$CUDA_IMAGE" bash -c "
     apt update && apt install -y gcc make freeglut3-dev git cmake bc && \
     git clone https://github.com/NVIDIA/cuda-samples.git /cuda-samples && \
     cd /cuda-samples/Samples/5_Domain_Specific/nbody && \
